@@ -6,7 +6,8 @@ describe('Pokedex', function() {
     cy.contains('Pokémon and Pokémon character names are trademarks of Nintendo.')
   })
   it('charmander can be opened', function() {
-    cy.visit('http://localhost:5000/pokemon/charmander')
+    cy.visit('http://localhost:5000/')
+    cy.contains('charmander').click()
     cy.contains('solar power')
   })
 })
