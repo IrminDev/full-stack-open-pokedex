@@ -54,7 +54,7 @@ jobs:
         with:
           url: https://pokedex-vu82.onrender.com/
           max-attempts: 3
-          retry-delay: 10
+          retry-delay: 10s
   main:
     name: Deploy to Render
     runs-on: ubuntu-latest
