@@ -35,7 +35,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ !contains(github.event.head_commit.message, '#skip') }}
-
+      - name: The job was successful
+        if: ${{ success() }}
+        with:
+          severity: info
+          details: Deploy succeeded!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: The job failed
+        if: ${{ failure() }}
+        with:
+          severity: error
+          details: Build Failed!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   main:
     name: Deploy to Render
     runs-on: ubuntu-latest
